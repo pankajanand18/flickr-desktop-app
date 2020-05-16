@@ -1,8 +1,18 @@
 module.exports = {
-  extends: 'erb/typescript',
+  extends: ['erb/typescript','plugin:import/typescript'],
   rules: {
     // A temporary hack related to IDE not resolving correct package.json
-    'import/no-extraneous-dependencies': 'off'
+    'import/no-extraneous-dependencies': 'off',
+    "import/extensions": [
+      "error",
+      "never",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+   ]
   },
   settings: {
     'import/resolver': {
