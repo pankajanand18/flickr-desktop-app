@@ -35,5 +35,12 @@
     "dll",
     "app/main.js",
     "app/main.js.map"
-  ]
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
 }
