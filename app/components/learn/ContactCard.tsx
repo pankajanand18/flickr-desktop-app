@@ -1,26 +1,24 @@
 import React from 'react';
+import { Contact } from './Interfaces';
 
-function ContactCard([imageUrl, name, email, phone]: [
-  string,
-  string,
-  string,
-  string
-]) {
+const ContactCard = (props: { contact: Contact }): JSX.Element => {
+  const { contact } = props;
   return (
     <div className="contact-card">
-      <img src={imageUrl} alt="contact" />
+      <img src={contact.imageUrl} alt="hello" height="100px" />
       <h3>
         Name:
-        {name}
+        {contact.name}
       </h3>
-      <p>
+      <h3>
         Email:
-        {email}
-      </p>
-      <p>
-        phone:
-        {phone}
-      </p>
+        {contact.email}
+      </h3>
+      <h3>
+        Phone:
+        {contact.phone}
+      </h3>
     </div>
   );
-}
+};
+export default ContactCard;
