@@ -8,6 +8,8 @@ export default function Home() {
     <div className={styles.container} data-tid="container">
       <h2>Welcome Home</h2>
       <Link to={routes.COUNTER}>Go to Counter</Link>
+      <br />
+      <Link to={routes.CONTACTS}>Go to Contacts</Link>
     </div>
   );
 }
