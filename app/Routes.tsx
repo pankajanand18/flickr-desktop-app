@@ -5,11 +5,13 @@ import App from './containers/App';
 import HomePage from './containers/HomePage';
 import CounterPage from './containers/CounterPage';
 import Contacts from './containers/Contacts';
+import TodoApp from './containers/TodoApp';
 
 export default function Routes() {
   return (
     <App>
       <Switch>
+        <Route path={routes.TODO} component={TodoApp} />
         <Route path={routes.CONTACTS} component={Contacts} />
         <Route path={routes.COUNTER} component={CounterPage} />
         <Route path={routes.HOME} component={HomePage} />
