@@ -1,5 +1,6 @@
 {
   "HOME": "/",
   "COUNTER": "/counter",
-  "CONTACTS": "/contacts"
+  "CONTACTS": "/contacts",
+  "TODO": "/todoApp"
 }
