@@ -4,3 +4,9 @@ export interface Contact {
   email?: string;
   phone?: string;
 }
+
+export type ToDoItemState = {
+  id: number;
+  taskName: string;
+  selected: boolean;
+};
