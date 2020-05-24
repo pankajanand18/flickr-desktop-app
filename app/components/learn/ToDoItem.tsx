@@ -6,18 +6,20 @@ type DefaultToDoItem = {
   value: ToDoItemState;
   handler: (id: number) => void;
 };
+
 class ToDoItem extends React.Component<DefaultToDoItem> {
+  completedStyle = {
+    fontStyle: 'italic',
+    color: '#cdcdcd',
+    textDecoration: 'line-through'
+  };
+
   constructor(item: DefaultToDoItem) {
     super(item);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
-    console.log(this.props.value.taskName);
-  }
-
   render(): JSX.Element {
-    console.log('rendering item with ', this.props.value.id);
     return (
       <div className="todo-item">
         <input
@@ -25,7 +27,9 @@ class ToDoItem extends React.Component<DefaultToDoItem> {
           onClick={() => this.props.handler(this.props.value.id)}
           checked={this.props.value.selected}
         />
-        <p>{this.props.value.taskName}</p>
+        <p style={this.props.value.selected ? this.completedStyle : null}>
+          {this.props.value.taskName}
+        </p>
       </div>
     );
   }

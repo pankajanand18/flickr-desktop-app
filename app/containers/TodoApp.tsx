@@ -4,6 +4,8 @@ import React from 'react';
 import todoItems from '../components/learn/factories/ToDoItems';
 import ToDoItem from '../components/learn/ToDoItem';
 import { ToDoItemState } from '../components/learn/Interfaces';
+import HomePageLink from '../components/HomePageLink';
+import styles from '../components/Home.css';
 
 type ToDoAppState = {
   toDoItems: ToDoItemState[];
@@ -37,6 +39,13 @@ export default class TodoApp extends React.Component<{}, ToDoAppState> {
     const todoItemList = this.state.toDoItems.map(value => (
       <ToDoItem key={value.id} value={value} handler={this.handleChange} />
     ));
-    return <div>{todoItemList}</div>;
+    return (
+      <div>
+        <HomePageLink />
+        <div className={styles.container} data-tid="container">
+          {todoItemList}
+        </div>
+      </div>
+    );
   }
 }
