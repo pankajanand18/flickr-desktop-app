@@ -31,17 +31,13 @@ export default class StarWarsApp extends React.Component<{}, StarWarsAppState> {
   }
 
   render(): JSX.Element {
-    const text = this.state.loading ? (
-      'loading'
-    ) : (
-      <div className={styles.container} data-tid="container">
-        {this.state.name}
-      </div>
-    );
+    const text = this.state.loading ? 'loading' : this.state.name;
     return (
       <div>
         <HomePageLink />
-        {text}
+        <div className={styles.container} data-tid="container">
+          {text}
+        </div>
       </div>
     );
   }
