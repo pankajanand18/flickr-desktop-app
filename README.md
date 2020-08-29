@@ -1,3 +1,20 @@
+## Flickr Desktop App
+
+a naive attempt to build an auto uploader for flickr based on curated set of photos
+User will choose photos from their local disk and provide details in the app about each photo and set the frequency to upload the photos.
+User should be able do following operation on the photos to upload
+
+- set the title
+- set the description
+- add tags ( automatically ? / bulk add )
+
+TODO
+
+- Add a photo selector
+- Create a service to persist the photos details
+- Build UI to show photos with details
+- Many more features
+
 <img src="internals/img/erb-banner.png" width="100%" />
 
 <br>
