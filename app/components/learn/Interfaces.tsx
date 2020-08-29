@@ -24,5 +24,5 @@ export type TravelFormState = {
   data: TravelFormDataState;
   handleChangeForOption: (e: React.FormEvent<HTMLSelectElement>) => void;
   handleChange: (e: React.FormEvent<HTMLInputElement>) => void;
-  submitHandler: (e: React.FormEvent<HTMLButtonElement>) => void;
+  submitHandler: (e: React.FormEvent<HTMLFormElement>) => void;
 };
