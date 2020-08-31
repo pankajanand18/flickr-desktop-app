@@ -7,10 +7,13 @@ type Props = {
 const ImagePreviewList: React.FC<Props> = ({ images }) => {
   console.log('returned ');
   const valueToReturn = images ? (
-    <div>
+    <div className="preview_list">
       {images.map(image => (
         <div key={image.path}>
-          <img src={image.path} height="300" width="300" alt="data to copy" />
+          <img src={image.path} alt="data to copy" />
+          <div>
+            <span>{image.name}</span>
+          </div>
         </div>
       ))}
     </div>

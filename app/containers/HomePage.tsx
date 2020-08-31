@@ -16,6 +16,17 @@ export default function HomePage() {
     images.forEach(file => {
       console.log(file.path);
     });
+
+    // const reader = new FileReader();
+    // reader.onloadend = (ev): void => {
+    //   const image = new Image();
+    //   if (ev.target) {
+    //     if (typeof ev.target.result === 'string') {
+    //       image.src = ev.target.result;
+    //     }
+    //   }
+    // };
+    // reader.readAsArrayBuffer(images[0]);
     setImageList(prevState => {
       console.log('Inside the state');
       prevState.forEach(value => {

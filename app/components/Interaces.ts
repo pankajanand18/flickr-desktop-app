@@ -1,6 +1,5 @@
-export type LocalImage = {
-  name: string;
-  path: string;
+export type LocalImageProps = {
   height?: number;
   width?: number;
 };
+export type LocalImage = File & LocalImageProps;
