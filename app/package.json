@@ -17,7 +17,5 @@
   "dependencies": {
     "node-gyp": "^7.1.0"
   },
-  "devDependencies": {
-    "sqlite": "^4.0.14"
-  }
+  "devDependencies": {}
 }

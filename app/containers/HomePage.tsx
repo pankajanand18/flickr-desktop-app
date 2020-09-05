@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import NavBar from '../components/NavBar';
 import DropBar from '../components/DropBar';
 import ImagePreviewList from '../components/ImagePreviewList';
-import { LocalImage } from '../components/Interaces';
+import { LocalImageFile } from '../components/Interaces';
 
 export default function HomePage() {
   const [imageList, setImageList] = useState([
@@ -12,11 +12,10 @@ export default function HomePage() {
       path: '/Users/pankaj.anand/Downloads/50183477607_c41564ff75_w.jpg'
     }
   ]);
-  const addImages = (images: LocalImage[]): void => {
+  const addImages = (images: LocalImageFile[]): void => {
     images.forEach(file => {
       console.log(file.path);
     });
-
     // const reader = new FileReader();
     // reader.onloadend = (ev): void => {
     //   const image = new Image();

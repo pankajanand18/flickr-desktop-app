@@ -1,15 +1,15 @@
 import React from 'react';
-import { LocalImage } from './Interaces';
+import { LocalImageFile } from './Interaces';
 
 import imageTypeFilter from '../utils/ImageTypeFilter';
 
 type Props = {
-  callback: (images: LocalImage[]) => void;
+  callback: (images: LocalImageFile[]) => void;
 };
 const AddPhotosItem: React.FC<Props> = ({ callback }: Props) => {
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.persist();
-    const list: File[] = [];
+    const list: LocalImageFile[] = [];
 
     if (event.currentTarget.files) {
       for (let i = 0; i < event.currentTarget.files.length; ) {

@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { LocalImage } from './Interaces';
+import { LocalImageFile } from './Interaces';
 import imageTypeFilter from '../utils/ImageTypeFilter';
 
 type Props = {
-  callback: (images: LocalImage[]) => void;
+  callback: (images: LocalImageFile[]) => void;
 };
 const DropBar: React.FC<Props> = ({ callback }: Props) => {
   const onDrop = useCallback(acceptedFiles => {
