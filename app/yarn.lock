@@ -564,6 +564,11 @@ signal-exit@^3.0.0:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.3.tgz#a1410c2edd8f077b08b4e253c8eacfcaf057461c"
   integrity sha512-VUJ49FC8U1OxwZLxIbTTrDvLnf/6TDgxZcK8wxR8zs13xpx7xbG60ndBlhNrFi2EMuFRoeDoJO7wthSLq42EjA==
 
+sqlite@^4.0.14:
+  version "4.0.14"
+  resolved "https://registry.yarnpkg.com/sqlite/-/sqlite-4.0.14.tgz#af35fc94205a874e3c7a08b2a66228d09f530ab3"
+  integrity sha512-U80Xp7ERil4kWr2MDR51S0AR+A8CzPjYMXnWdtkD5e34vUCZCE48hSIxJsOQSI84mGI1Y4N4qty4NNPhIDHJwQ==
+
 sshpk@^1.7.0:
   version "1.16.1"
   resolved "https://registry.yarnpkg.com/sshpk/-/sshpk-1.16.1.tgz#fb661c0bef29b39db40769ee39fa70093d6f6877"
