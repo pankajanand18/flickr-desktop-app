@@ -1,5 +1,9 @@
 export type LocalImageProps = {
-  height?: number;
-  width?: number;
+  id?: number | 0;
+  description?: string;
+  tags?: string;
+  name: string;
+  path: string;
 };
-export type LocalImage = File & LocalImageProps;
+
+export type LocalImageFile = File | LocalImageProps;
