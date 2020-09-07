@@ -19,10 +19,12 @@ export default class DbService {
     }
   }
 
-  public getImagesToPublish(): Promise<Image[]> | undefined {
-    return this.dbConnection
-      ?.getRepository(Image)
-      .find({ where: { isPublished: 0 } });
+  public getImagesToPublish(limit = 10): Promise<Image[]> | undefined {
+    return this.dbConnection?.getRepository(Image).find({
+      where: { isPublished: 0 },
+      take: limit,
+      order: { created: 'DESC' }
+    });
   }
 
   public async saveImages(images: LocalImageFile[]): Promise<void> {
