@@ -15,8 +15,11 @@
   },
   "license": "MIT",
   "dependencies": {
+    "mysql2": "^2.1.0",
     "node-gyp": "^7.1.0",
-    "sqlite": "^4.0.14"
+    "react-native": "^0.63.2",
+    "sqlite3": "^5.0.0",
+    "typeorm": "^0.2.25"
   },
   "devDependencies": {}
 }

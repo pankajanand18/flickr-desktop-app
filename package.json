@@ -296,8 +296,7 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "reflect-metadata": "^0.1.13",
-    "source-map-support": "^0.5.16",
-    "typeorm": "^0.2.25"
+    "source-map-support": "^0.5.16"
   },
   "devEngines": {
     "node": ">=7.x",
