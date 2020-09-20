@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { createConnection, Connection, ConnectionOptions } from 'typeorm';
 import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOptions';
-import Image from './Models/ImageP';
+import { Image, Tag } from './Models/models';
 import { LocalImageFile } from '../components/Interaces';
 
 export default class DbService {
@@ -66,7 +66,7 @@ export default class DbService {
     username: process.env.MYSQL_USER_NAME,
     password: process.env.MYSQL_USER_PASSWORD,
     database: 'flickr_images',
-    entities: [Image],
+    entities: [Tag, Image],
     synchronize: true,
     logging: true,
     logger: 'advanced-console'
