@@ -1,21 +1,22 @@
-import 'reflect-metadata';
-import { createConnection, Connection, ConnectionOptions } from 'typeorm';
-import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOptions';
-import { Image, Tag } from './Models/models';
-import { LocalImageFile } from '../components/Interaces';
+import 'reflect-metadata'
+import { createConnection, Connection, ConnectionOptions } from 'typeorm'
+import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOptions'
+import Image from './Models/models'
+import { LocalImageFile } from '../components/Interaces'
+import Tag from './Models/tag.model'
 
 export default class DbService {
-  protected dbConnection: Connection | undefined;
+  protected dbConnection: Connection | undefined
 
-  protected config: ConnectionOptions;
+  protected config: ConnectionOptions
 
   constructor() {
-    this.config = DbService.getMySQlDbConfig();
+    this.config = DbService.getMySQlDbConfig()
   }
 
   public async setDbConnection() {
     if (this.dbConnection === undefined) {
-      this.dbConnection = await this.getDbConnection();
+      this.dbConnection = await this.getDbConnection()
     }
   }
 
@@ -23,25 +24,25 @@ export default class DbService {
     return this.dbConnection?.getRepository(Image).find({
       where: { isPublished: 0 },
       take: limit,
-      order: { created: 'DESC' }
-    });
+      order: { created: 'DESC' },
+    })
   }
 
   public async saveImages(images: LocalImageFile[]): Promise<void> {
     if (this.dbConnection == null || this.dbConnection === undefined) {
-      console.log('DB connection is not initialized');
-      this.dbConnection = await this.getDbConnection();
+      console.log('DB connection is not initialized')
+      this.dbConnection = await this.getDbConnection()
     }
 
     for (let i = 0; i < images.length; i += 1) {
-      const image = images[i];
-      console.log(`saving ${image.path}`);
-      const imageToSave = new Image();
-      imageToSave.isPublished = false;
-      imageToSave.path = image.path;
-      imageToSave.name = image.name;
+      const image = images[i]
+      console.log(`saving ${image.path}`)
+      const imageToSave = new Image()
+      imageToSave.isPublished = false
+      imageToSave.path = image.path
+      imageToSave.name = image.name
       // eslint-disable-next-line no-await-in-loop
-      await this.dbConnection.getRepository(Image).save(imageToSave);
+      await this.dbConnection.getRepository(Image).save(imageToSave)
       // await imageToSave.save();
     }
   }
@@ -52,11 +53,9 @@ export default class DbService {
       process.env.MYSQL_USER_NAME === undefined ||
       process.env.MYSQL_USER_PASSWORD === undefined
     ) {
-      throw Error(
-        'environment variable to intialize mysql connection not found '
-      );
+      throw Error('environment variable to intialize mysql connection not found ')
     }
-    return createConnection(this.config);
+    return createConnection(this.config)
   }
 
   private static getMySQlDbConfig = (): MysqlConnectionOptions => ({
@@ -69,6 +68,6 @@ export default class DbService {
     entities: [Tag, Image],
     synchronize: true,
     logging: true,
-    logger: 'advanced-console'
-  });
+    logger: 'advanced-console',
+  })
 }
