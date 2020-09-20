@@ -1,4 +1,12 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  ManyToMany,
+  PrimaryGeneratedColumn
+} from 'typeorm';
+// eslint-disable-next-line import/no-cycle
+import Tag from './tag.model';
 
 @Entity({ name: 'image' })
 export default class Image extends BaseEntity {
@@ -32,4 +40,13 @@ export default class Image extends BaseEntity {
 
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   modified!: Date;
+
+  @ManyToMany(
+    type => Tag,
+    tags => tags.images,
+    {
+      cascade: true
+    }
+  )
+  tags!: Tag[];
 }

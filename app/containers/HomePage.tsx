@@ -5,9 +5,11 @@ import DropBar from '../components/DropBar';
 import ImagePreviewList from '../components/ImagePreviewList';
 import { LocalImageFile } from '../components/Interaces';
 import DbService from '../db/dbservice';
-import Image from '../db/Models/ImageP';
+import Image from '../db/Models/models';
+import AppContextService from '../services/appContext.service';
 
 let dbService: DbService;
+let appContext: AppContextService;
 
 export default function HomePage() {
   const [imageList, setImageList] = useState([
@@ -58,15 +60,24 @@ export default function HomePage() {
   }
 
   const init = async (): Promise<void> => {
-    if (dbService === undefined) {
-      dbService = new DbService();
-      await dbService.setDbConnection();
-      const imagesFromDb = await dbService.getImagesToPublish();
+    if (appContext === undefined) {
+      appContext = new AppContextService();
+      await appContext.init();
+      const imagesFromDb = await appContext.dbService.getImagesToPublish();
       addImages(getLocalImages(imagesFromDb), false);
       console.log('data loaded');
     } else {
       console.log('db service already initialized');
     }
+    // if (dbService === undefined) {
+    //   dbService = new DbService();
+    //
+    //   const imagesFromDb = await dbService.getImagesToPublish();
+    //   addImages(getLocalImages(imagesFromDb), false);
+    //   console.log('data loaded');
+    // } else {
+    //   console.log('db service already initialized');
+    // }
   };
   setTimeout(() => {
     init();

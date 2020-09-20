@@ -1,8 +1,8 @@
 {
-  "name": "electron-react-boilerplate",
-  "productName": "ElectronReact",
+  "name": "flickr-schedule-uploader",
+  "productName": "FlickrDesktopUploader",
   "version": "1.1.0",
-  "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
+  "description": "A desktop application to publish images to flickr with some cool utilities( schedule publishing of images and tags manager)",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
     "build-dll": "cross-env NODE_ENV=development webpack --config ./configs/webpack.config.renderer.dev.dll.babel.js --colors",
@@ -310,6 +310,11 @@
     "extends browserslist-config-erb"
   ],
   "prettier": {
+    "printWidth": 100,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "useTabs": false,
     "overrides": [
       {
         "files": [
