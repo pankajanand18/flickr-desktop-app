@@ -1,52 +1,46 @@
-import {
-  BaseEntity,
-  Column,
-  Entity,
-  ManyToMany,
-  PrimaryGeneratedColumn
-} from 'typeorm';
+import { BaseEntity, Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm'
 // eslint-disable-next-line import/no-cycle
-import Tag from './tag.model';
+import Tag from './tag.model'
 
 @Entity({ name: 'image' })
 export default class Image extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id!: number;
+  id!: number
 
   @Column('varchar')
-  name!: string;
+  name!: string
 
   @Column('varchar', {
     length: 500,
-    unique: true
+    unique: true,
   })
-  path!: string;
+  path!: string
 
   @Column('varchar', {
     nullable: true,
-    default: null
+    default: null,
   })
-  description!: string;
+  description!: string
 
   @Column({ type: 'boolean', default: false })
-  isPublished!: boolean;
+  isPublished!: boolean
 
   @Column({
     type: 'datetime',
     default: () => 'CURRENT_TIMESTAMP',
-    update: false
+    update: false,
   })
-  created!: Date;
+  created!: Date
 
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
-  modified!: Date;
+  modified!: Date
 
   @ManyToMany(
     type => Tag,
     tags => tags.images,
     {
-      cascade: true
-    }
+      cascade: true,
+    },
   )
-  tags!: Tag[];
+  tags!: Tag[]
 }

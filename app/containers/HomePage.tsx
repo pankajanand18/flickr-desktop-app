@@ -1,73 +1,73 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 // import Home from '../components/Home';
-import NavBar from '../components/NavBar';
-import DropBar from '../components/DropBar';
-import ImagePreviewList from '../components/ImagePreviewList';
-import { LocalImageFile } from '../components/Interaces';
-import DbService from '../db/dbservice';
-import Image from '../db/Models/models';
-import AppContextService from '../services/appContext.service';
+import NavBar from '../components/NavBar'
+import DropBar from '../components/DropBar'
+import ImagePreviewList from '../components/ImagePreviewList'
+import { LocalImageFile } from '../components/Interaces'
+import DbService from '../db/dbservice'
+import Image from '../db/Models/models'
+import AppContextService from '../services/appContext.service'
 
-let dbService: DbService;
-let appContext: AppContextService;
+let dbService: DbService
+let appContext: AppContextService
 
 export default function HomePage() {
   const [imageList, setImageList] = useState([
     {
       name: 'default image',
-      path: '/Users/pankaj.anand/Downloads/50183477607_c41564ff75_w.jpg'
-    }
-  ]);
+      path: '/Users/pankaj.anand/Downloads/50183477607_c41564ff75_w.jpg',
+    },
+  ])
 
   const addImages = (images: LocalImageFile[], saveToDb = true): void => {
     images.forEach(file => {
-      console.log(file.path);
-    });
+      console.log(file.path)
+    })
     setImageList(prevState => {
-      console.log('Inside the state');
+      console.log('Inside the state')
       prevState.forEach(value => {
-        console.log(value);
-      });
+        console.log(value)
+      })
 
       if (saveToDb) {
         dbService
           .saveImages(images)
           .then(() => {
-            console.log('success for creating images');
-            return false;
+            console.log('success for creating images')
+            return false
           })
           .catch(error => {
-            console.log(error);
-          });
+            console.log(error)
+          })
       }
-      return prevState.concat(images);
-    });
-  };
+      return prevState.concat(images)
+    })
+  }
 
   function getLocalImages(images: Image[] | undefined): LocalImageFile[] {
     if (images === undefined) {
-      console.log('empty array');
-      return [];
+      console.log('empty array')
+      return []
     }
     return images.map(image => {
       return {
         name: image.name,
         path: image.path,
         description: image.description,
-        lastModified: null
-      };
-    });
+        lastModified: null,
+      }
+    })
   }
 
   const init = async (): Promise<void> => {
     if (appContext === undefined) {
-      appContext = new AppContextService();
-      await appContext.init();
-      const imagesFromDb = await appContext.dbService.getImagesToPublish();
-      addImages(getLocalImages(imagesFromDb), false);
-      console.log('data loaded');
+      appContext = new AppContextService()
+      await appContext.init()
+      const imagesFromDb = await appContext.dbService.getImagesToPublish()
+      addImages(getLocalImages(imagesFromDb), false)
+      console.log('data loaded')
     } else {
-      console.log('db service already initialized');
+      console.log('db service already initialized')
     }
     // if (dbService === undefined) {
     //   dbService = new DbService();
@@ -78,10 +78,10 @@ export default function HomePage() {
     // } else {
     //   console.log('db service already initialized');
     // }
-  };
+  }
   setTimeout(() => {
-    init();
-  }, 5);
+    init()
+  }, 5)
 
   return (
     <div>
@@ -89,5 +89,5 @@ export default function HomePage() {
       <DropBar callback={addImages} />
       <ImagePreviewList images={imageList} />
     </div>
-  );
+  )
 }

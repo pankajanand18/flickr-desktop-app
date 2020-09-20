@@ -1,4 +1,4 @@
-import { FlickrAuth } from './interface';
+import { FlickrAuth } from './interface'
 
 const flickrConfig: () => FlickrAuth | null = (): FlickrAuth | null => {
   if (
@@ -11,10 +11,10 @@ const flickrConfig: () => FlickrAuth | null = (): FlickrAuth | null => {
       oauthVerifier: process.env.flickr_oauthVerifier as string,
       oAuthTokenSecret: process.env.flickr_tokenSecret as string,
       apiSecret: process.env.FLICKR_SECRET as string,
-      apiKey: process.env.FLICKR_API_KEY as string
-    };
+      apiKey: process.env.FLICKR_API_KEY as string,
+    }
   }
-  return null;
-};
+  return null
+}
 
-export default flickrConfig;
+export default flickrConfig
