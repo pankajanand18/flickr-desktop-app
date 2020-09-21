@@ -1,31 +1,31 @@
-import { BaseEntity, Column, Entity, ManyToMany, PrimaryColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, ManyToMany, PrimaryColumn } from 'typeorm'
 // eslint-disable-next-line import/no-cycle
-import Image from './models';
+import Image from './models'
 
 @Entity({ name: 'tag' })
 export default class Tag extends BaseEntity {
   @PrimaryColumn('varchar', {
     length: 500,
-    unique: true
+    unique: true,
   })
-  name!: string;
+  name!: string
 
   @Column({ type: 'boolean', default: true })
-  isPublished!: boolean;
+  isPublished!: boolean
 
   @Column({
     type: 'datetime',
     default: () => 'CURRENT_TIMESTAMP',
-    update: false
+    update: false,
   })
-  created!: Date;
+  created!: Date
 
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
-  modified!: Date;
+  modified!: Date
 
   @ManyToMany(
     type => Image,
-    image => image.tags
+    image => image.tags,
   )
-  images!: Image[];
+  images!: Image[]
 }

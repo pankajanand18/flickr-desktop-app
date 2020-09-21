@@ -327,8 +327,7 @@
           "parser": "json"
         }
       }
-    ],
-    "singleQuote": true
+    ]
   },
   "stylelint": {
     "extends": [

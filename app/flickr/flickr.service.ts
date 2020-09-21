@@ -1,47 +1,41 @@
-import { FlickrAuth } from './interface';
-import flickrConfig from './flickrAuth';
+import { FlickrAuth } from './interface'
+import flickrConfig from './flickrAuth'
 
-const Flickr = require('flickr-sdk');
+const Flickr = require('flickr-sdk')
 
 export default class FlickrService {
-  protected authConfig: FlickrAuth | null;
+  protected authConfig: FlickrAuth | null
 
   constructor() {
-    this.authConfig = flickrConfig();
+    this.authConfig = flickrConfig()
     if (this.authConfig === null) {
-      throw Error('flickr auth/credentials not found');
+      throw Error('flickr auth/credentials not found')
     }
   }
 
   async checkToken() {
-    console.log(this.authConfig);
-    const plugin = this.getOAuth();
-    const flickr = new Flickr(plugin);
+    console.log(this.authConfig)
+    const plugin = this.getOAuth()
+    const flickr = new Flickr(plugin)
     try {
-      const response: Response = await flickr.test.login();
-      console.log(response.body);
-      return true;
+      const response: Response = await flickr.test.login()
+      console.log(response.body)
+      return true
     } catch (e) {
-      console.log('error occured');
-      console.log(e);
-      return false;
+      console.log('error occured')
+      console.log(e)
+      return false
     }
   }
 
   private getOAuth() {
-    const oauth = new Flickr.OAuth(
-      this.authConfig?.apiKey,
-      this.authConfig?.apiSecret
-    );
+    const oauth = new Flickr.OAuth(this.authConfig?.apiKey, this.authConfig?.apiSecret)
 
-    const plugin = oauth.plugin(
-      this.authConfig?.oAuthToken,
-      this.authConfig?.oAuthTokenSecret
-    );
-    return plugin;
+    const plugin = oauth.plugin(this.authConfig?.oAuthToken, this.authConfig?.oAuthTokenSecret)
+    return plugin
   }
 
-  async uploadPhotos() {
-    const flickr = new Flickr.Upload(this.getOAuth());
-  }
+  // async uploadPhotos() {
+  //   const flickr = new Flickr.Upload(this.getOAuth())
+  // }
 }
