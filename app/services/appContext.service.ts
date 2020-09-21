@@ -1,6 +1,6 @@
 import DbService from '../db/dbservice'
 import FlickrService from '../flickr/flickr.service'
-import { ScheduledCallback } from './interface'
+import { ONE_HOUR_SCHEDULE, ScheduledCallback } from './interface'
 import CronService from './cron.service'
 
 export default class AppContextService implements ScheduledCallback {
@@ -19,7 +19,8 @@ export default class AppContextService implements ScheduledCallback {
 
   public async init(): Promise<void> {
     await this.flickrService.checkToken()
-    //  await this.dbService.setDbConnection()
+    await this.dbService.setDbConnection()
+    this.cronService.start(ONE_HOUR_SCHEDULE)
   }
 
   schedulerUpdate(): void {
