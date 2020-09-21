@@ -19,8 +19,14 @@ export default class AppContextService implements ScheduledCallback {
 
   public async init(): Promise<void> {
     await this.flickrService.checkToken()
-    await this.dbService.setDbConnection()
+    try {
+      await this.dbService.setDbConnection()
+    } catch (e) {
+      console.log('error occured in intializing db')
+    }
     this.cronService.start(ONE_HOUR_SCHEDULE)
+    const popularTags: string[] = await this.flickrService.getPopularTags()
+    await this.dbService.saveTags(popularTags)
   }
 
   schedulerUpdate(): void {

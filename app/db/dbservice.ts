@@ -1,8 +1,8 @@
 import 'reflect-metadata'
 import { createConnection, Connection, ConnectionOptions } from 'typeorm'
 import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOptions'
-import Image from './Models/models'
 import { LocalImageFile } from '../components/Interaces'
+import Image from './Models/models'
 import Tag from './Models/tag.model'
 
 export default class DbService {
@@ -44,6 +44,16 @@ export default class DbService {
       // eslint-disable-next-line no-await-in-loop
       await this.dbConnection.getRepository(Image).save(imageToSave)
       // await imageToSave.save();
+    }
+  }
+
+  public async saveTags(tags: string[]): Promise<void> {
+    const repository = this.dbConnection?.getRepository(Tag)
+    for (let i = 0; i < tags.length; i += 1) {
+      const tag = tags[i]
+      const tagToCreate = new Tag()
+      tagToCreate.name = tag
+      repository?.save(tagToCreate)
     }
   }
 
