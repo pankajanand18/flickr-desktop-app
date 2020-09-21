@@ -1,16 +1,18 @@
-import React from 'react';
-import { LocalImageFile } from './Interaces';
+import React from 'react'
+import { LocalImageFile } from './Interaces'
 
 type Props = {
-  images?: LocalImageFile[];
-};
+  images?: LocalImageFile[]
+}
 const ImagePreviewList: React.FC<Props> = ({ images }) => {
-  console.log('returned ');
+  console.log('returned ')
   const valueToReturn = images ? (
     <div className="preview_list">
       {images.map(image => (
-        <div key={image.path}>
-          <img src={image.path} alt="data to copy" />
+        <div className="display-container" key={image.path}>
+          <div className="image-container" key={image.path}>
+            <img src={image.path} alt="data to copy" />
+          </div>
           <div>
             <span>{image.name}</span>
           </div>
@@ -19,8 +21,8 @@ const ImagePreviewList: React.FC<Props> = ({ images }) => {
     </div>
   ) : (
     <div />
-  );
-  return valueToReturn;
-};
+  )
+  return valueToReturn
+}
 
-export default ImagePreviewList;
+export default ImagePreviewList
