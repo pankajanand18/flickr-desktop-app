@@ -35,7 +35,7 @@ export default class FlickrService {
     return plugin
   }
 
-  async uploadPhotos() {
-    const flickr = new Flickr.Upload(this.getOAuth())
-  }
+  // async uploadPhotos() {
+  //   const flickr = new Flickr.Upload(this.getOAuth())
+  // }
 }
