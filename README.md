@@ -10,9 +10,10 @@ User should be able do following operation on the photos to upload
 
 TODO
 
-- Add a photo selector
-- Create a service to persist the photos details
+- ~Add a photo selector~
+- ~Create a service to persist the photos details~
 - Build UI to show photos with details
+- use node-keytar to store flickr secret token
 - Many more features
 
 <img src="internals/img/erb-banner.png" width="100%" />
