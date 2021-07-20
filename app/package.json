@@ -19,7 +19,7 @@
     "mysql2": "^2.1.0",
     "node-cron": "^2.0.3",
     "node-gyp": "^7.1.0",
-    "react-native": "^0.63.2",
+    "react-native": "^0.64.1",
     "typeorm": "^0.2.25"
   },
   "devDependencies": {}
